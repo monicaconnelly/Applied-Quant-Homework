@@ -1,0 +1,25 @@
+---
+title: "HW4 Univariate Models"
+output: html_document
+name: Monica Connelly
+date: February 1, 2018
+---
+
+## Read in Data
+```{r}
+
+```
+
+
+## Question 1
+```{r}
+
+```
+
+
+## Question 2
+```{r}
+
+```
+
+
