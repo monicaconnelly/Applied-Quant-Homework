@@ -5,21 +5,118 @@ name: Monica Connelly
 date: February 1, 2018
 ---
 
-## Read in Data
+# Read in Data
+```{r}
+tree_metadata <- 
+treedata <- read.csv('https://raw.githubusercontent.com/dmcglinn/quant_methods/gh-pages/data/treedata.csv', header=T)
+treedata_subset <- read.csv('https://raw.githubusercontent.com/dmcglinn/quant_methods/gh-pages/data/treedata_subset.csv', header=T)
+library(car)
+
+```
+
+
+# Question 1
+```{r}
+
+trees_1abies <- treedata[treedata$species == "Abies fraseri", ]
+trees_2acer <- treedata[treedata$species == "Acer rubrum", ]
+
+pairs(trees_1abies, lower.panel = panel.smooth, upper.panel = NULL)
+
+## fix to just be for one species and repeat
+modspc1 <- lm(treedata$cover ~ treedata$species=="Abies fraseri")
+modspc1
+
+modspc2 <- lm(treedata$cover ~ treedata$species=="Acer rubrum")
+modspc2
+
+## fix models to assess more variables
+modspc1b <- lm(trees_1abies$cover ~ trees_1abies$utme + trees_1abies$utmn + trees_1abies$utmn + trees_1abies$elev + trees_1abies$disturb + trees_1abies$streamdist + trees_1abies$tci)
+modspc1b
+
+modspc2b <- lm(trees_2acer$cover ~ trees_2acer$utme + trees_2acer$utmn + trees_2acer$elev + trees_2acer$disturb + trees_2acer$tci + trees_2acer$streamdist + trees_2acer$beers)
+modspc2b
+
+panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor=3, ...)
+{
+    usr <- par("usr"); on.exit(par(usr))
+    par(usr = c(0, 1, 0, 1))
+    r <- abs(cor(x, y))
+    txt <- format(c(r, 0.123456789), digits = digits)[1]
+    txt <- paste0(prefix, txt)
+    if(missing(cex.cor)) 
+        cex.cor <- 0.8/strwidth(txt)
+    text(0.5, 0.5, txt, cex = cex.cor)
+}
+
+pairs(trees_2acer, lower.panel = panel.smooth, upper.panel = panel.cor)
+
+pairs(trees_1abies, lower.panel = panel.smooth, upper.panel = panel.cor)
+
+## run ANOVA here (I may need help with this function)
+library(car)
+anovaspc1 <- Anova(modspc1)
+anovaspc1
+anovaspc2 <- Anova(modspc2)
+anovaspc2
+
+```
+
+## Additional Questions
+1. How well does the exploratory model appear to explain cover?
+  a) the model doesn't appear to explain the model very well, much of the data in the exploratory analysis appears to be clustered
+
+2. Which exploratory variables are the most important?
+  a) the standard deviations and correlation coefficients are the most important
+
+3. Do model diagnostics indicate any problems with violations of OLS assumptions?
+  a) yes, the OLS assumption of no multicolinearity appears to be violated
+
+4. Are you able to explain variance in one species better than another?  Why might this be the case?
+  a) Yes, the Abies species appears to be better explained becaue it doesn't violate as many OLS assumptions.
+
+
+# Question 2
+```{r}
+
+acer_glm <- glm(trees_2acer$cover ~ trees_2acer$utme + trees_2acer$utmn + trees_2acer$elev + trees_2acer$tci + trees_2acer$streamdist + trees_2acer$disturb + trees_2acer$beers, 
+                family='poisson')
+acer_glm
+
+abies_glm <- glm(cover ~ utme + trees_1abies$utmn + trees_1abies$elev + trees_1abies$tci + trees_1abies$streamdist + trees_1abies$disturb + trees_1abies$beers, data=trees_1abies,
+                family='poisson')
+abies_glm
+
+
+abies_pseudo_r2 = function(abies_glm) {
+     1 -  abies_glm$deviance / abies_glm$null.deviance
+ }
+abies_pseudo_r2
+
+acer_pseudo_r2 <- function(acer_glm) {
+    1 -  acer_glm$deviance / acer_glm$null.deviance
+}
+acer_pseudo_r2
+```
+
+## Additional Questions
+1. Does it appear that changing the error distribution changed the results much?  In what ways?
+  a) Yes, the pseudo r2 values altered, causing that for abies to be closer to 1 and that for acer to be farther from 1.
+
+
+# Question 3
+1. English summary of what I have found and what conclusions we can take away from my analysis?
+  a) 
+
+
+# Question 4 (optional)
 ```{r}
 
 ```
 
 
-## Question 1
+# Question 5 (optional)
 ```{r}
 
 ```
-
-
-## Question 2
-```{r}
-
-```
-
 
