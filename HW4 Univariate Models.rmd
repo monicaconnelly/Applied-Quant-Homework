@@ -106,7 +106,7 @@ acer_pseudo_r2
 
 # Question 3
 1. English summary of what I have found and what conclusions we can take away from my analysis?
-  a) 
+  a) In the initial anovas, I cound that the analysis of the acer model accounted for more of the variance than the abies model, indicating that the acer species is more of a generalist than the abies.  Additionally, after running the glm models, I found that the abies model had about 650 units less residual deviance than the acer model with significantly fewer degrees of freedom and null deviance.
 
 
 # Question 4 (optional)
