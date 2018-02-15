@@ -1,0 +1,23 @@
+---
+title: "HW6 Spatial Models"
+output: html_document
+name: 
+date: 
+---
+
+## Input Packages and Data
+```{r setup, include=FALSE}
+
+
+```
+
+
+## Question 1
+```{r}
+
+
+```
+
+
+
+
