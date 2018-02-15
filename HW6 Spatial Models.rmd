@@ -1,23 +1,45 @@
 ---
 title: "HW6 Spatial Models"
 output: html_document
-name: 
-date: 
+name: "Monica Connelly"
+date: "February 15, 2018"
 ---
 
 ## Input Packages and Data
-```{r setup, include=FALSE}
-
+```{r}
+data(BCI)
+BCI_xy = data.frame(x = rep(seq(625754, 626654, by = 100), each=5),y = rep(seq(1011569, 1011969, by=100), len=50))
 
 ```
 
 
 ## Question 1
+Examine if there is evidence of spatial dependence in a rare and a common species in the BCI tree dataset.
+```{r}
+
+
+
+```
+
+a. 
+
+
+## Question 2
+Build two generalized linear models to predict the abundance of the species Drypetes standleyi using the abundance of other tree species in the study site.
 ```{r}
 
 
 ```
 
+
+1) Did including the spatial error term have a large impact on the coefficients of the model?
+  a. 
+
+2) Did including the spatial error terms significantly improve model fit?
+  a. 
+
+3) Explain why you did or did not observe a difference in the influence of adding the spatial error term between the two models.
+  a. 
 
 
 
