@@ -43,7 +43,7 @@ plot(BCI_xy, cex=BCI_allsums)
 plot(BCI_allsums, cex = (BCI_allsums < 8))
 plot(BCI_allsums)
 
-vegdist(BCI_)
+vegdist(BCI_xy)
 ```
 
 a. There is evidence of spatial dependence. more so on rare than on common speacies.
@@ -53,6 +53,10 @@ a. There is evidence of spatial dependence. more so on rare than on common speac
 Build two generalized linear models to predict the abundance of the species Drypetes standleyi using the abundance of other tree species in the study site.
 ```{r}
 
+sp_ids = c("Cordia.lasiocalyx", "Hirtella.triandra",
+           "Picramnia.latifolia", "Quassia.amara",
+           "Tabernaemontana.arborea", "Trattinnickia.aspera", 
+           "Xylopia.macrantha")
 
 
 
