@@ -9,24 +9,51 @@ date: "February 15, 2018"
 ```{r}
 data(BCI)
 BCI_xy = data.frame(x = rep(seq(625754, 626654, by = 100), each=5),y = rep(seq(1011569, 1011969, by=100), len=50))
-
+BCI_xy
+BCI
 ```
 
 
 ## Question 1
 Examine if there is evidence of spatial dependence in a rare and a common species in the BCI tree dataset.
 ```{r}
+plot(BCI_xy)
+colSums(BCI)
+BCI_allsums = colSums(BCI)
+BCI_allsums
+quantile(BCI_allsums, c(.25, .75))
+
+BCI_rare = BCI[ , BCI_allsums < 8]
+BCI_rare
+
+BCI_comm = BCI[ , BCI_allsums > 81]
+BCI_comm
+
+colnames(BCI_rare)
+
+BCI_srlow = apply(BCI, 1, function(x) sum(x < 8))
+hist(BCI_srlow)
+
+BCI_srhigh = apply(BCI, 1, function(x) sum(x > 82))
+hist(BCI_srhigh)
+
+plot(BCI_xy, cex=BCI_allsums)
 
 
+plot(BCI_allsums, cex = (BCI_allsums < 8))
+plot(BCI_allsums)
 
+vegdist(BCI_)
 ```
 
-a. 
+a. There is evidence of spatial dependence. more so on rare than on common speacies.
 
 
 ## Question 2
 Build two generalized linear models to predict the abundance of the species Drypetes standleyi using the abundance of other tree species in the study site.
 ```{r}
+
+
 
 
 ```
