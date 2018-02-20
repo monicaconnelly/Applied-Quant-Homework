@@ -58,7 +58,21 @@ sp_ids = c("Cordia.lasiocalyx", "Hirtella.triandra",
            "Tabernaemontana.arborea", "Trattinnickia.aspera", 
            "Xylopia.macrantha")
 
+sp_a = BCI[ , "Cordia.lasiocalyx"]
+sp_b = BCI[ , "Hirtella.triandra"]
+sp_c = BCI[ , "Picramnia.latifolia"]
+sp_d = BCI[ , "Quassia.amara"]
+sp_e = BCI[ , "Tabernaemontana.arborea"]
+sp_f = BCI[ , "Trattinnickia.aspera"]
+sp_g = BCI[ , "Xylopia.macrantha"]
 
+BCI_short = cbind(sp_a, sp_b, sp_c, sp_d, sp_e, sp_f, sp_g)
+
+head(BCI_short)
+
+BCI_mod1 = 
+
+BCI_mod2 = 
 
 ```
 
@@ -67,10 +81,13 @@ sp_ids = c("Cordia.lasiocalyx", "Hirtella.triandra",
   a. 
 
 2) Did including the spatial error terms significantly improve model fit?
-  a. 
+  a. including the exponential spatial error term made the model fit better
 
 3) Explain why you did or did not observe a difference in the influence of adding the spatial error term between the two models.
   a. 
 
+
+##Note
+I understand what the lesson is getting at and what I should be seeing in the data, however the code to get to that point is stil confusing to me.  I am submitting this and will review the answer key as well as work with a classmate to attempt to understand the code.
 
 
